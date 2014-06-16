@@ -9,7 +9,9 @@
     "passport": "*",
     "passport-http": "*",
     "express-session": "*",
-    "bcrypt-nodejs": "latest"
+    "bcrypt-nodejs": "latest",
+    "jwt-simple": "*",
+    "moment": "*"
   },
   "devDependencies": {
     "browserify": "^4.1.3",

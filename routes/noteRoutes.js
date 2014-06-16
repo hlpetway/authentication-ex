@@ -1,10 +1,12 @@
 'use strict';
 var Note = require('../models/Note');
 
-module.exports = function(app, passport) {
+//add jwtauth so it runs through before we return a list of notes
+module.exports = function(app, passport, jwtauth) {
   var baseUrl = app.get('apiBase') + 'notes';
 
-  app.get(baseUrl, function(req, res) {
+//add jwtauth here as well so it gets executed in when someone navigates here
+  app.get(baseUrl, jwtauth, function(req, res) {
     res.setHeader('Content-Type', 'application/json');
     Note.find({}, function(err, notes) {
       if(err) {

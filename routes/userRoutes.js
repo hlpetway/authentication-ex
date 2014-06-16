@@ -27,14 +27,17 @@ module.exports = function(app, passport) {
           return false;
         }
 
-        res.send(resNewUser);
+        //res.send(resNewUser);
+        res.json({'jwt_token': resNewUser.createToken(app)});
       });
     });
   });
 
+//this assigns a token at login that will then be used until it expires
   app.get(baseUrl,
     passport.authenticate('basic', {session: false}),
     function(req, res) {
-      res.json(req.user);
+      //res.json(req.user);
+      res.json({'jwt_token': req.user.createToken(app)});
     });
 };
